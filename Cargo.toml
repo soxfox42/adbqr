@@ -1,6 +1,9 @@
 [package]
 name = "adbqr"
 version = "1.0.0"
+description = "A command-line tool for pairing devices with ADB via QR code."
+repository = "https://github.com/soxfox42/adbqr"
+license = "MIT"
 edition = "2021"
 
 [dependencies]
