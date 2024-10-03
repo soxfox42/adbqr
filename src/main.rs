@@ -66,7 +66,8 @@ impl QrRenderer {
 const HELP_MESSAGE: &'static str = "\
 \x1B[1mPair with QR code\x1B[0m
 
-On your device:
+Make sure your Android device is on the same network as your computer.
+Then, on your Android device:
 1. Open \x1B[1mDeveloper options\x1B[0m.
 2. Open \x1B[1mWireless debugging\x1B[0m, and enable it if necessary.
 3. Select \x1B[1mPair with QR code\x1B[0m.
