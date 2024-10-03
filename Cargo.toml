@@ -1,0 +1,9 @@
+[package]
+name = "adbqr"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+mdns-sd = "0.11.5"
+nanoid = "0.4.0"
+qrcode = "0.14.1"
