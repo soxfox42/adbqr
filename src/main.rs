@@ -27,19 +27,15 @@ impl QrRenderer {
     }
 
     fn render(&self) {
-        for y in (0..self.height).step_by(4) {
-            for x in (0..self.width).step_by(2) {
-                let block = [
-                    self.color(x, y),
-                    self.color(x + 1, y),
-                    self.color(x, y + 1),
-                    self.color(x + 1, y + 1),
-                    self.color(x, y + 2),
-                    self.color(x + 1, y + 2),
-                    self.color(x, y + 3),
-                    self.color(x + 1, y + 3),
-                ];
-                print!("{}", Self::block_to_char(block));
+        for y in (0..self.height).step_by(2) {
+            for x in 0..self.width {
+                let block = match (self.color(x, y), self.color(x, y + 1)) {
+                    (Color::Light, Color::Light) => ' ',
+                    (Color::Light, Color::Dark) => '▄',
+                    (Color::Dark, Color::Light) => '▀',
+                    (Color::Dark, Color::Dark) => '█',
+                };
+                print!("{}", block);
             }
             println!();
         }
@@ -50,16 +46,6 @@ impl QrRenderer {
             return Color::Light;
         }
         self.colors[y * self.width + x]
-    }
-
-    fn block_to_char(block: [Color; 8]) -> char {
-        let mut binary_value = 0;
-        for (i, cell) in block.into_iter().enumerate() {
-            if cell == Color::Dark {
-                binary_value |= 1 << i;
-            }
-        }
-        OCTANTS[binary_value as usize]
     }
 }
 
