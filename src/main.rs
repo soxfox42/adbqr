@@ -2,7 +2,7 @@ use std::process::Command;
 
 use mdns_sd::{ServiceDaemon, ServiceEvent};
 use nanoid::nanoid;
-use qrcode::{Color, QrCode};
+use qrcode::{Color, EcLevel, QrCode};
 
 struct QrRenderer {
     colors: Vec<Color>,
@@ -61,11 +61,11 @@ const PAIRING_SERVICE: &'static str = "_adb-tls-pairing._tcp.local.";
 fn main() {
     println!("{HELP_MESSAGE}");
 
-    let service_name = format!("adbqr-{}", nanoid!(10));
-    let password = nanoid!();
+    let service_name = format!("adbqr-{}", nanoid!(4));
+    let password = nanoid!(6);
 
     let data = format!("WIFI:T:ADB;S:{service_name};P:{password};;");
-    let qr_code = QrCode::new(data).unwrap();
+    let qr_code = QrCode::with_error_correction_level(data, EcLevel::L).unwrap();
     let qr_renderer = QrRenderer::new(qr_code);
     qr_renderer.render();
 
