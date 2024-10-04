@@ -1,12 +1,8 @@
-mod octants;
-
 use std::process::Command;
 
 use mdns_sd::{ServiceDaemon, ServiceEvent};
 use nanoid::nanoid;
 use qrcode::{Color, QrCode};
-
-use octants::OCTANTS;
 
 struct QrRenderer {
     colors: Vec<Color>,
