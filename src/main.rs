@@ -1,9 +1,9 @@
 mod connect;
-mod select;
 mod pair_code;
 mod pair_qr;
+mod select;
 
-use std::env;
+use std::{env, process};
 
 pub const CONNECT_SERVICE: &'static str = "_adb-tls-connect._tcp.local.";
 pub const PAIRING_SERVICE: &'static str = "_adb-tls-pairing._tcp.local.";
@@ -15,7 +15,13 @@ fn main() -> anyhow::Result<()> {
         "pair" => pair_qr::run(),
         "manual" => pair_code::run()?,
         "connect" => connect::run()?,
-        _ => {}
+        "-h" | "--help" => {
+            println!("Usage: adbqr [pair|manual|connect]");
+        }
+        unknown => {
+            eprintln!("Unknown command: {}", unknown);
+            process::exit(1);
+        }
     }
 
     Ok(())
