@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.2.0
 
 - Add "adbqr connect" command to connect to already paired devices.
 - Add "adbqr manual" command to connect using a pairing code, instead of via QR code.
