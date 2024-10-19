@@ -4,6 +4,8 @@ use mdns_sd::{ServiceDaemon, ServiceEvent};
 use nanoid::nanoid;
 use qrcode::{Color, EcLevel, QrCode};
 
+use crate::PAIRING_SERVICE;
+
 struct QrRenderer {
     colors: Vec<Color>,
     width: usize,
@@ -55,8 +57,6 @@ Then, on your Android device:
 3. Select \x1B[1mPair with QR code\x1B[0m.
 4. Scan the following QR code:
 ";
-
-const PAIRING_SERVICE: &'static str = "_adb-tls-pairing._tcp.local.";
 
 pub fn run() {
     println!("{HELP_MESSAGE}");
