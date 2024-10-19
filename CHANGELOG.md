@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add "adbqr connect" command to connect to already paired devices.
+
 ## 1.1.0
 
 - Use half-blocks for QR instead of octants.

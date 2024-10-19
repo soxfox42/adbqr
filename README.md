@@ -4,4 +4,4 @@
 
 ![adbqr Screenshot](screenshot.png)
 
-adbqr is a simple command line tool to pair Android devices for wireless debugging without Android Studio.
+adbqr is a simple command line tool to manage wireless ADB connections easily, like in Android Studio.
